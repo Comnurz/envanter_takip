@@ -1,6 +1,47 @@
 <html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
 <body>
-    <p>Merhaba!</p>
-    <p>Çalışıyor!</p>
+    <table>
+        <thead>
+            <th>Urun Kod</th>
+            <th>Urun No</th>
+            <th>Fatura No</th>
+            <th>Urun Marka</th>
+            <th>Urun Kategori</th>
+            <th>Urun Ozellik</th>
+            <th>Zimmet</th>
+        </thead>
+        <tbody>
+        {% for urun in urun_listesi %}
+        <tr>
+            <td>{{ urun.urun_kod }}</td>
+            <td>{{ urun.urun_no }}</td>
+            <td>{{ urun.fatura }}</td>
+            <td>{{ urun.marka }}</td>
+            <td>{{ urun.kategori }}</td>
+            <td>{{ urun.ozellik }}</td>
+            <td>{{ urun.zimmet }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
 </body>
 </html>

@@ -1,6 +1,6 @@
 from django.urls import path
-from . import views
+from envanter_takip.views import UrunListView
 
 urlpatterns = [
-    path('', views.post_list, name='post_list'),
+    path(r'urunler', UrunListView.as_view(), name='urun_listesi'),
 ]
