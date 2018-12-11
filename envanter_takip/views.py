@@ -27,3 +27,10 @@ class UrunListView(ListView):
 
     def get_queryset(self):
         return Urun.objects.all()
+
+class KategoriListView(ListView):
+    context_object_name = 'kategoriler'
+    template_name = 'envanter_takip/kategoriler.html'
+
+    def get_queryset(self):
+        return Kategori.objects.all()
