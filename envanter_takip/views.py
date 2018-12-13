@@ -43,3 +43,11 @@ class MarkaListView(ListView):
 
     def get_queryset(self):
         return Marka.objects.all()
+
+
+class FaturaListView(ListView):
+    context_object_name = 'faturalar'
+    template_name = 'envanter_takip/faturalar.html'
+
+    def get_queryset(self):
+        return Fatura.objects.all()

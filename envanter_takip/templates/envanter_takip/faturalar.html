@@ -1,0 +1,37 @@
+<html>
+<head>
+<style>
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td, th {
+  border: 1px solid #dddddd;
+  text-align: left;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #dddddd;
+}
+</style>
+</head>
+<body>
+    <table>
+        <thead>
+            <th>Fatura Numarasi</th>
+            <th>Fatura Tarihi</th>
+        </thead>
+        <tbody>
+        {% for fatura in faturalar %}
+        <tr>
+            <td>{{ fatura.tarih }}</td>
+            <td>{{ fatura.numara }}</td>
+        </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
