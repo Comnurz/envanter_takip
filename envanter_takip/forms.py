@@ -1,5 +1,5 @@
 from django import forms
-from .models import Kategori
+from .models import Kategori, Marka
 
 
 class KategoriForm(forms.ModelForm):
@@ -7,4 +7,12 @@ class KategoriForm(forms.ModelForm):
 
     class Meta:
         model = Kategori
+        fields = ('isim',)
+
+
+class MarkaForm(forms.ModelForm):
+    isim = forms.CharField(max_length=255, required=True)
+
+    class Meta:
+        model = Marka
         fields = ('isim',)

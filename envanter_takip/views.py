@@ -3,7 +3,7 @@ from django.views.generic.edit import ModelFormMixin
 
 from envanter_takip.models import Urun, Marka, Kategori, Fatura, Zimmet
 from django.views.generic import View, DetailView, ListView, TemplateView
-from .forms import KategoriForm
+from .forms import KategoriForm, MarkaForm
 
 # Create your views here.
 class HomePageView(TemplateView):
@@ -34,7 +34,6 @@ class UrunListView(ListView):
 class KategoriListView(ListView):
     context_object_name = 'kategoriler'
     template_name = 'envanter_takip/kategoriler.html'
-    form_class = KategoriForm
 
 
     def get_queryset(self):
@@ -42,8 +41,6 @@ class KategoriListView(ListView):
 
     def post(self, request, *args, **kwargs):
         form = KategoriForm(request.POST)
-        import pdb;
-        pdb.set_trace()
 
         if form.is_valid():
             kategori_isim = form.cleaned_data.get('isim')
@@ -59,6 +56,15 @@ class MarkaListView(ListView):
 
     def get_queryset(self):
         return Marka.objects.all()
+
+    def post(self, request, *args, **kwargs):
+        form = MarkaForm(request.POST)
+
+        if form.is_valid():
+            marka_isim = form.cleaned_data.get('isim')
+            isim = Marka(isim=marka_isim)
+            isim.save()
+        return redirect('markalar')
 
 
 class FaturaListView(ListView):

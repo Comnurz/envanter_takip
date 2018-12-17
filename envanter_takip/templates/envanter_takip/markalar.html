@@ -31,5 +31,20 @@ tr:nth-child(even) {
         {% endfor %}
         </tbody>
     </table>
+    <button type="button" onclick="OlusturFunction()">Olustur</button>
+
+    <div id="olustur" style="display:block;">
+        {% include "includes/_forms.html" %}
+    </div>
 </body>
+<script>
+function OlusturFunction() {
+  var x = document.getElementById("olustur");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 </html>
