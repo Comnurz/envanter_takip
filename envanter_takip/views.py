@@ -3,7 +3,7 @@ from django.views.generic.edit import ModelFormMixin
 
 from envanter_takip.models import Urun, Marka, Kategori, Fatura, Zimmet
 from django.views.generic import View, DetailView, ListView, TemplateView
-from .forms import KategoriForm, MarkaForm
+from .forms import KategoriForm, MarkaForm, FaturaForm
 
 # Create your views here.
 class HomePageView(TemplateView):
@@ -73,3 +73,15 @@ class FaturaListView(ListView):
 
     def get_queryset(self):
         return Fatura.objects.all()
+
+    def post(self, request, *args, **kwargs):
+        form = FaturaForm(request.POST)
+
+        if form.is_valid():
+            numara = form.cleaned_data.get('numara')
+            tarih = form.cleaned_data.get('tarih')
+            fatura = Fatura(numara=numara, tarih=tarih)
+            fatura.save()
+
+        return redirect('faturalar')
+
