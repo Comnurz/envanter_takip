@@ -33,8 +33,8 @@ class Zimmet(models.Model):
 
 
 class Urun(models.Model):
-    urun_kod = models.CharField(max_length=5, default='URN')
-    urun_no = models.PositiveIntegerField(default='1')
+    urun_kod = models.CharField(max_length=5, default='URN', verbose_name='Ürün Kodu')
+    urun_no = models.PositiveIntegerField(default='1', verbose_name='Ürün No')
     ozellik = models.TextField()
     marka = models.ForeignKey(Marka, on_delete=models.CASCADE,)
     kategori = models.ForeignKey(Kategori, on_delete=models.CASCADE,)
