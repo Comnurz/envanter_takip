@@ -30,7 +30,7 @@ tr:nth-child(even) {
             <th>Zimmet</th>
         </thead>
         <tbody>
-        {% for urun in urun_listesi %}
+        {% for urun in urunler %}
         <tr>
             <td>{{ urun.urun_kod }}</td>
             <td>{{ urun.urun_no }}</td>
@@ -43,5 +43,20 @@ tr:nth-child(even) {
         {% endfor %}
         </tbody>
     </table>
+    <button type="button" onclick="OlusturFunction()">Olustur</button>
+
+    <div id="olustur" style="display:block;">
+        {% include "includes/_urun_create_form.html" %}
+    </div>
 </body>
+<script>
+function OlusturFunction() {
+  var x = document.getElementById("olustur");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
 </html>
