@@ -1,34 +1,34 @@
 from django import forms
-from .models import Kategori, Marka, Fatura, Urun
+from .models import Category, Brand, Invoice, Product
 
 
-class KategoriForm(forms.ModelForm):
-    isim = forms.CharField(max_length=255, required=True)
-
-    class Meta:
-        model = Kategori
-        fields = ('isim',)
-
-
-class MarkaForm(forms.ModelForm):
-    isim = forms.CharField(max_length=255, required=True)
+class CategoryForm(forms.ModelForm):
+    name = forms.CharField(max_length=255, required=True)
 
     class Meta:
-        model = Marka
-        fields = ('isim',)
+        model = Category
+        fields = ('name',)
 
 
-class FaturaForm(forms.ModelForm):
-    numara = forms.CharField(max_length=255, required=True)
-    tarih = forms.DateField(required=True)
-
-    class Meta:
-        model = Fatura
-        fields = ('numara', 'tarih')
-
-
-class UrunForm(forms.ModelForm):
+class BrandForm(forms.ModelForm):
+    name = forms.CharField(max_length=255, required=True)
 
     class Meta:
-        model = Urun
+        model = Brand
+        fields = ('name',)
+
+
+class InvoiceForm(forms.ModelForm):
+    number = forms.CharField(max_length=255, required=True)
+    date = forms.DateField(required=True)
+
+    class Meta:
+        model = Invoice
+        fields = ('number', 'date')
+
+
+class ProductForm(forms.ModelForm):
+
+    class Meta:
+        model = Product
         fields = '__all__'

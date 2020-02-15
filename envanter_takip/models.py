@@ -1,45 +1,48 @@
 from django.db import models
 
+from django.contrib.auth.models import User
 
-# Create your models here.
-class Fatura(models.Model):
-    numara = models.CharField(max_length=16)
-    tarih = models.DateTimeField()
+
+class Invoice(models.Model):
+    number = models.CharField(max_length=16)
+    date = models.DateTimeField()
 
     def __str__(self):
         return str(self.numara)
 
 
-class Kategori(models.Model):
-    isim = models.CharField(max_length=255)
+class Category(models.Model):
+    category_code = models.CharField(max_length=7, default='URN', verbose_name='Kategori Kodu')
+    name = models.CharField(max_length=255)
 
     def __str__(self):
         return str(self.isim)
 
 
-class Marka(models.Model):
-    isim = models.CharField(max_length=255)
+class Brand(models.Model):
+    brand_code = models.CharField(max_length=7, default='URN', verbose_name='Marka Kodu')
+    name = models.CharField(max_length=255)
 
     def __str__(self):
         return str(self.isim)
 
 
-class Zimmet(models.Model):
-    isim = models.CharField(max_length=255)
-    teslim_tarihi = models.DateTimeField()
+class Debit(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE,)
+    delivery_date = models.DateTimeField()
 
     def __str__(self):
         return str(self.isim)
 
 
-class Urun(models.Model):
-    urun_kod = models.CharField(max_length=5, default='URN', verbose_name='Ürün Kodu')
-    urun_no = models.PositiveIntegerField(default='1', verbose_name='Ürün No')
-    ozellik = models.TextField()
-    marka = models.ForeignKey(Marka, on_delete=models.CASCADE,)
-    kategori = models.ForeignKey(Kategori, on_delete=models.CASCADE,)
-    fatura = models.ForeignKey(Fatura, on_delete=models.CASCADE,)
-    zimmet = models.ForeignKey(Zimmet, on_delete=models.CASCADE,)
+class Product(models.Model):
+    product_code = models.CharField(max_length=15, default='URN', verbose_name='Ürün Kodu')
+    product_number = models.PositiveIntegerField(default='1', verbose_name='Ürün No')
+    feature = models.TextField()
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE,)
+    category = models.ForeignKey(Category, on_delete=models.CASCADE,)
+    invoice = models.ForeignKey(Invoice, on_delete=models.CASCADE,)
+    debit = models.ForeignKey(Debit, on_delete=models.CASCADE,)
 
     def __str__(self):
         return str(self.urun_kod) + str(self.urun_no)
