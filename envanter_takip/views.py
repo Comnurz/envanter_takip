@@ -5,7 +5,7 @@ from envanter_takip.models import Urun, Marka, Kategori, Fatura, Zimmet
 from django.views.generic import View, DetailView, ListView, TemplateView
 from .forms import KategoriForm, MarkaForm, FaturaForm
 
-# Create your views here.
+
 class HomePageView(TemplateView):
     template_name = 'envanter_takip/index.html'
     context_object_name = 'urun_listesi'
