@@ -21,26 +21,26 @@ tr:nth-child(even) {
 <body>
     <table>
         <thead>
-            <th>Kategori Ismi</th>
+            <th>Kategori İsmi</th>
         </thead>
         <tbody>
         {% for kategori in kategoriler %}
         <tr>
-            <td>{{ kategori.isim }}</td>
+            <td>{{ kategori.name }}</td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
-    <button type="button" onclick="OlusturFunction()">Olustur</button>
+    <button type="button" onclick="create()">Olustur</button>
 
-    <div id="olustur" style="display:block;">
+    <div id="create" style="display:block;">
         {% include "includes/_marka_kategori_create_forms.html" %}
     </div>
 
 </body>
 <script>
-function OlusturFunction() {
-  var x = document.getElementById("olustur");
+function create() {
+  var x = document.getElementById("create");
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {

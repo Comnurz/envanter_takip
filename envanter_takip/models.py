@@ -8,7 +8,7 @@ class Invoice(models.Model):
     date = models.DateTimeField()
 
     def __str__(self):
-        return str(self.numara)
+        return str(self.number)
 
 
 class Category(models.Model):
@@ -16,7 +16,7 @@ class Category(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
-        return str(self.isim)
+        return str(self.name)
 
 
 class Brand(models.Model):
@@ -24,7 +24,7 @@ class Brand(models.Model):
     name = models.CharField(max_length=255)
 
     def __str__(self):
-        return str(self.isim)
+        return str(self.name)
 
 
 class Debit(models.Model):
@@ -32,7 +32,7 @@ class Debit(models.Model):
     delivery_date = models.DateTimeField()
 
     def __str__(self):
-        return str(self.isim)
+        return str(self.user)
 
 
 class Product(models.Model):
@@ -45,4 +45,4 @@ class Product(models.Model):
     debit = models.ForeignKey(Debit, on_delete=models.CASCADE,)
 
     def __str__(self):
-        return str(self.urun_kod) + str(self.urun_no)
+        return str(self.product_code) + str(self.product_number)

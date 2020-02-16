@@ -47,13 +47,13 @@ class ProductListView(TemplateView):
         form = ProductForm(request.POST)
 
         if form.is_valid():
-            product_code = form.cleaned_data.get('urun_kod')
-            product_number = form.cleaned_data.get('urun_no')
-            feature = form.cleaned_data.get('ozellik')
-            brand = form.cleaned_data.get('marka')
-            category = form.cleaned_data.get('kategori')
-            invoice = form.cleaned_data.get('fatura')
-            debit = form.cleaned_data.get('zimmet')
+            product_code = form.cleaned_data.get('product_code')
+            product_number = form.cleaned_data.get('product_number')
+            feature = form.cleaned_data.get('feature')
+            brand = form.cleaned_data.get('brand')
+            category = form.cleaned_data.get('category')
+            invoice = form.cleaned_data.get('invoice')
+            debit = form.cleaned_data.get('debit')
             product = Product(
                 product_code=product_code,
                 product_number=product_number,
@@ -78,7 +78,7 @@ class CategoryListView(ListView):
         form = CategoryForm(request.POST)
 
         if form.is_valid():
-            category_name = form.cleaned_data.get('isim')
+            category_name = form.cleaned_data.get('name')
             name = Category(name=category_name)
             name.save()
         return redirect('kategoriler')
@@ -95,7 +95,7 @@ class BrandListView(ListView):
         form = BrandForm(request.POST)
 
         if form.is_valid():
-            brand_name = form.cleaned_data.get('isim')
+            brand_name = form.cleaned_data.get('name')
             name = Brand(name=brand_name)
             name.save()
         return redirect('markalar')
@@ -112,8 +112,8 @@ class InvoiceListView(ListView):
         form = InvoiceForm(request.POST)
 
         if form.is_valid():
-            number = form.cleaned_data.get('numara')
-            date = form.cleaned_data.get('tarih')
+            number = form.cleaned_data.get('number')
+            date = form.cleaned_data.get('date')
             invoice = Invoice(number=number, date=date)
             invoice.save()
 

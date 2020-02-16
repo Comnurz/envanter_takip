@@ -32,26 +32,26 @@ tr:nth-child(even) {
         <tbody>
         {% for urun in urunler %}
         <tr>
-            <td>{{ urun.urun_kod }}</td>
-            <td>{{ urun.urun_no }}</td>
-            <td>{{ urun.fatura }}</td>
-            <td>{{ urun.marka }}</td>
-            <td>{{ urun.kategori }}</td>
-            <td>{{ urun.ozellik }}</td>
-            <td>{{ urun.zimmet }}</td>
+            <td>{{ urun.product_code }}</td>
+            <td>{{ urun.product_number }}</td>
+            <td>{{ urun.invoice }}</td>
+            <td>{{ urun.brand }}</td>
+            <td>{{ urun.category }}</td>
+            <td>{{ urun.feature }}</td>
+            <td>{{ urun.debit }}</td>
         </tr>
         {% endfor %}
         </tbody>
     </table>
-    <button type="button" onclick="OlusturFunction()">Olustur</button>
+    <button type="button" onclick="create()">Olustur</button>
 
-    <div id="olustur" style="display:block;">
+    <div id="create" style="display:block;">
         {% include "includes/_urun_create_form.html" %}
     </div>
 </body>
 <script>
-function OlusturFunction() {
-  var x = document.getElementById("olustur");
+function create() {
+  var x = document.getElementById("create");
   if (x.style.display === "none") {
     x.style.display = "block";
   } else {
