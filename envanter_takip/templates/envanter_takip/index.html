@@ -1,5 +1,5 @@
-<html>
-<head>
+{% extends "envanter_takip/base.html" %}
+{% block head %}
 <style>
 table {
   font-family: arial, sans-serif;
@@ -17,8 +17,9 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 </style>
-</head>
-<body>
+{% endblock %}
+{% block content_header %}Ana Sayfa{% endblock %}
+{% block body %}
     <h2><a href="kategoriler">Kategoriler</a></h2>
     <table>
         <thead>
@@ -85,5 +86,5 @@ tr:nth-child(even) {
         {% endfor %}
         </tbody>
     </table>
-</body>
-</html>
+{% endblock %}
+

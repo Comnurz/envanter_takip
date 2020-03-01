@@ -1,5 +1,5 @@
-<html>
-<head>
+{% extends "envanter_takip/base.html" %}
+{% block head %}
 <style>
 table {
   font-family: arial, sans-serif;
@@ -17,8 +17,12 @@ tr:nth-child(even) {
   background-color: #dddddd;
 }
 </style>
-</head>
-<body>
+{% endblock %}
+{% block content_header %}Urunlar{% endblock %}
+{% block current_page_link %}
+<li class="breadcrumb-item active">Urunler</li>
+{% endblock %}
+{% block body %}
     <table>
         <thead>
             <th>Urun Kod</th>
@@ -48,7 +52,8 @@ tr:nth-child(even) {
     <div id="create" style="display:block;">
         {% include "includes/_urun_create_form.html" %}
     </div>
-</body>
+{% endblock %}
+{% block script %}
 <script>
 function create() {
   var x = document.getElementById("create");
@@ -59,4 +64,4 @@ function create() {
   }
 }
 </script>
-</html>
+{% endblock %}
