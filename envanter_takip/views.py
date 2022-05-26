@@ -1,3 +1,4 @@
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import redirect
 
 from envanter_takip.models import Product, Brand, Category, Invoice, Debit
@@ -5,8 +6,9 @@ from django.views.generic import ListView, TemplateView
 from .forms import CategoryForm, BrandForm, InvoiceForm, ProductForm
 
 
-class HomePageView(TemplateView):
+class HomePageView(LoginRequiredMixin, TemplateView):
     context_object_name = 'liste'
+    login_url = '/login'
     template_name = 'envanter_takip/index.html'
 
     def get_context_data(self, **kwargs):
@@ -24,7 +26,8 @@ class HomePageView(TemplateView):
         return context
 
 
-class ProductListView(TemplateView):
+class ProductListView(LoginRequiredMixin, TemplateView):
+    login_url = '/login'
     context_object_name = 'liste'
     template_name = 'envanter_takip/urunler.html'
 
@@ -67,7 +70,8 @@ class ProductListView(TemplateView):
         return redirect('urunler')
 
 
-class CategoryListView(ListView):
+class CategoryListView(LoginRequiredMixin, ListView):
+    login_url = '/login'
     context_object_name = 'kategoriler'
     template_name = 'envanter_takip/kategoriler.html'
 
@@ -84,7 +88,8 @@ class CategoryListView(ListView):
         return redirect('kategoriler')
 
 
-class BrandListView(ListView):
+class BrandListView(LoginRequiredMixin, ListView):
+    login_url = '/login'
     context_object_name = 'markalar'
     template_name = 'envanter_takip/markalar.html'
 
@@ -101,7 +106,8 @@ class BrandListView(ListView):
         return redirect('markalar')
 
 
-class InvoiceListView(ListView):
+class InvoiceListView(LoginRequiredMixin, ListView):
+    login_url = '/login'
     context_object_name = 'faturalar'
     template_name = 'envanter_takip/faturalar.html'
 
