@@ -43,7 +43,10 @@
           <i class="right fas fa-angle-down"></i>
         </a>
         <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
-          <a class="dropdown-item dropdown-header" href="/logout">Logout</a>
+          <form method="post" action="{% url 'logout' %}">
+            {% csrf_token %}
+            <button type="submit" class="dropdown-item dropdown-header">Logout</button>
+          </form>
         </div>
       </li>
     </ul>
